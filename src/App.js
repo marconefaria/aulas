@@ -1,5 +1,6 @@
 import React from 'react';
 import Membro from "./Membro";
+import Title from "./Title";
 
 const employee1 = {
   nome: "Marcone Faria",
@@ -20,9 +21,10 @@ const employee2 = {
 function App() {
   return (
     <div>
-      <h1>Membros Cadastrados:</h1>
-      <Membro membro = {employee1}/>
-      <Membro membro = {employee2}/>
+      <Title  title="Membros Cadastrados:" subtitle="Veja os membros cadastrados">
+        <Membro membro = {employee1}/>
+        <Membro membro = {employee2}/>
+      </Title>
     </div>
   );
 }
