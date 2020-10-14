@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Membro from "./Membro";
 import Title from "./Title";
 
@@ -19,12 +19,41 @@ const employee2 = {
 };
 
 function App() {
+  const [membro, setMembro] = useState({});
+
+  function handleInputChange(e){
+    const key = e.target.name;
+    const newMembro = { ...membro };
+    newMembro[key] = e.target.value;
+
+    setMembro(newMembro);
+  }
+
   return (
     <div>
       <Title  title="Membros Cadastrados:" subtitle="Veja os membros cadastrados">
         <Membro membro = {employee1}/>
         <Membro membro = {employee2}/>
       </Title>
+
+      <h1>Novo membro:</h1>
+        <input type="text" placeholder="Digite seu nome:" onChange={handleInputChange}/>
+        
+        <br/>
+        
+        <input type="radio" id="GP" name="cargo" value="Gerente de Produtos" onChange={handleInputChange}/>
+        <label htmlFor="GP">Gerente de Produtos</label>
+        
+        <br/>
+        
+        <input type="radio" id="GS" name="cargo" value="Gerente Scrum" onChange={handleInputChange}/>
+        <label htmlFor="GS">Gerente Scrum</label>
+
+        <br/>
+        <br/>
+
+        <p>Nome do Membro: {membro.nome}</p>
+        <p>Cargo selecionado: {membro.cargo}</p>
     </div>
   );
 }
